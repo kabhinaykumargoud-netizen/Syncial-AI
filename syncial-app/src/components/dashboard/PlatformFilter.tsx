@@ -1,3 +1,5 @@
+'use client';
+
 import { Platform } from '@/types';
 import { PLATFORM_CONFIG } from '@/lib/utils';
 import { cn } from '@/lib/utils';

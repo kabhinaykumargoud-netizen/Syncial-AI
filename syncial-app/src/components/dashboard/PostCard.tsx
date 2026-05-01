@@ -1,3 +1,5 @@
+'use client';
+
 import { Post } from '@/types';
 import { PLATFORM_CONFIG, formatDate, formatRelative } from '@/lib/utils';
 import { Clock, CheckCircle2, ImageIcon } from 'lucide-react';
