@@ -22,7 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased selection:bg-indigo-500/30`}>
+        <div className="noise-overlay" />
+        <div className="nebula-container">
+          <div className="nebula-glow nebula-primary" />
+          <div className="nebula-glow nebula-secondary" />
+        </div>
         {children}
         <Toaster
           theme="dark"
@@ -32,6 +37,7 @@ export default function RootLayout({
               background: 'var(--surface-2)',
               border: '1px solid var(--border)',
               color: 'var(--foreground)',
+              borderRadius: '12px',
             },
           }}
         />

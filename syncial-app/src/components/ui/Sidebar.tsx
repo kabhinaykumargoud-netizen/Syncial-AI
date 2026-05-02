@@ -42,25 +42,25 @@ export default function Sidebar({ userEmail, userName }: SidebarProps) {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-5 py-6 border-b" style={{ borderColor: 'var(--border)' }}>
-        <Link href="/dashboard" className="flex items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'var(--accent)' }}>
-            <Zap className="w-4.5 h-4.5 text-white" size={18} />
+      <div className="px-5 py-8 border-b" style={{ borderColor: 'var(--border)' }}>
+        <Link href="/dashboard" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
+          <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20" style={{ background: 'var(--accent)' }}>
+            <Zap className="w-5 h-5 text-white fill-white/20" />
           </div>
-          <span className="text-xl font-bold gradient-text">Syncial</span>
+          <span className="text-2xl font-extrabold tracking-tight gradient-accent">Syncial</span>
         </Link>
       </div>
 
       {/* New Post quick action */}
-      <div className="px-4 py-4">
+      <div className="px-4 py-6">
         <Link
           href="/posts/create"
           onClick={() => setMobileOpen(false)}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-semibold text-sm text-white transition-all duration-200 hover:scale-[1.02] btn-glow"
+          className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full font-bold text-sm text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98]"
           style={{ background: 'var(--accent)' }}
           id="sidebar-new-post"
         >
-          <Plus size={16} />
+          <Plus size={18} />
           New Post
         </Link>
       </div>
@@ -77,18 +77,19 @@ export default function Sidebar({ userEmail, userName }: SidebarProps) {
               onClick={() => setMobileOpen(false)}
               id={`nav-${item.label.toLowerCase()}`}
               className={cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group',
+                'flex items-center gap-3 px-4 py-3 rounded-full text-sm font-semibold transition-all duration-300 group relative overflow-hidden',
                 active
                   ? 'text-white'
                   : 'hover:text-white'
               )}
               style={{
-                background: active ? 'var(--accent)' : 'transparent',
+                background: active ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
                 color: active ? 'white' : 'var(--muted)',
+                boxShadow: active ? 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)' : 'none',
               }}
               onMouseEnter={(e) => {
                 if (!active) {
-                  (e.currentTarget as HTMLElement).style.background = 'var(--surface-2)';
+                  (e.currentTarget as HTMLElement).style.background = 'rgba(255, 255, 255, 0.03)';
                   (e.currentTarget as HTMLElement).style.color = 'var(--foreground)';
                 }
               }}
@@ -99,9 +100,12 @@ export default function Sidebar({ userEmail, userName }: SidebarProps) {
                 }
               }}
             >
-              <Icon size={18} className="flex-shrink-0" />
+              {active && (
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-500 rounded-full" />
+              )}
+              <Icon size={20} className={cn("flex-shrink-0 transition-transform duration-300", active ? "scale-110" : "group-hover:scale-110")} />
               <span className="flex-1">{item.label}</span>
-              {active && <ChevronRight size={14} className="opacity-70" />}
+              {active && <ChevronRight size={14} className="opacity-50" />}
             </Link>
           );
         })}
@@ -125,18 +129,18 @@ export default function Sidebar({ userEmail, userName }: SidebarProps) {
           onClick={handleLogout}
           disabled={loggingOut}
           id="logout-btn"
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-full text-sm font-semibold transition-all duration-300"
           style={{ color: 'var(--muted)' }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = 'rgba(239,68,68,0.1)';
-            (e.currentTarget as HTMLElement).style.color = '#ef4444';
+            (e.currentTarget as HTMLElement).style.background = 'rgba(239,68,68,0.05)';
+            (e.currentTarget as HTMLElement).style.color = '#f87171';
           }}
           onMouseLeave={(e) => {
             (e.currentTarget as HTMLElement).style.background = 'transparent';
             (e.currentTarget as HTMLElement).style.color = 'var(--muted)';
           }}
         >
-          <LogOut size={16} />
+          <LogOut size={18} />
           {loggingOut ? 'Signing out…' : 'Sign Out'}
         </button>
       </div>
@@ -158,11 +162,11 @@ export default function Sidebar({ userEmail, userName }: SidebarProps) {
         className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 h-14 border-b"
         style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
       >
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent)' }}>
-            <Zap size={16} className="text-white" />
+        <Link href="/dashboard" className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20" style={{ background: 'var(--accent)' }}>
+            <Zap size={18} className="text-white fill-white/20" />
           </div>
-          <span className="font-bold gradient-text">Syncial</span>
+          <span className="text-lg font-extrabold tracking-tight gradient-accent">Syncial</span>
         </Link>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}

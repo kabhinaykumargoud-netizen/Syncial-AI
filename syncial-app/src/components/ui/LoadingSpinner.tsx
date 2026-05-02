@@ -8,13 +8,12 @@ interface LoadingSpinnerProps {
 export default function LoadingSpinner({ size = 'md', text }: LoadingSpinnerProps) {
   const sizeMap = { sm: 16, md: 24, lg: 40 };
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-12">
+    <div className="flex flex-col items-center justify-center gap-4 py-12 animate-fade-in">
       <Loader2
         size={sizeMap[size]}
-        className="animate-spin"
-        style={{ color: 'var(--accent)' }}
+        className="animate-spin text-indigo-500"
       />
-      {text && <p className="text-sm" style={{ color: 'var(--muted)' }}>{text}</p>}
+      {text && <p className="text-sm font-medium text-zinc-500">{text}</p>}
     </div>
   );
 }

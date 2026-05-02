@@ -46,24 +46,19 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" style={{ background: 'var(--background)' }}>
-      {/* Background glow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ background: 'var(--accent)' }} />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full opacity-10 blur-3xl" style={{ background: '#ec4899' }} />
-      </div>
+    <div className="min-h-screen flex items-center justify-center px-4 relative">
 
       <div className="w-full max-w-md animate-fade-in relative z-10">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'var(--accent)' }}>
-              <Zap className="w-5 h-5 text-white" />
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20" style={{ background: 'var(--accent)' }}>
+              <Zap className="w-6 h-6 text-white fill-white/20" />
             </div>
-            <span className="text-2xl font-bold gradient-text">Syncial</span>
+            <span className="text-3xl font-extrabold tracking-tight gradient-accent">Syncial</span>
           </div>
-          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--foreground)' }}>Welcome back</h1>
-          <p style={{ color: 'var(--muted)' }}>Sign in to manage your social media</p>
+          <h1 className="text-4xl font-bold mb-3 tracking-tight text-white">Welcome back</h1>
+          <p className="text-zinc-400 font-medium">Sign in to manage your social media</p>
         </div>
 
         {/* Card */}
@@ -73,8 +68,8 @@ export default function LoginPage() {
             onClick={handleGoogleLogin}
             disabled={googleLoading}
             id="google-login-btn"
-            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border font-medium transition-all duration-200 hover:scale-[1.01] mb-6 disabled:opacity-60"
-            style={{ borderColor: 'var(--border-hover)', color: 'var(--foreground)', background: 'var(--surface-2)' }}
+            className="w-full flex items-center justify-center gap-3 py-3.5 px-4 border border-white/5 font-medium transition-all duration-300 hover:bg-white/5 hover:scale-[1.01] mb-8 disabled:opacity-60"
+            style={{ color: 'var(--foreground)', background: 'rgba(255,255,255,0.03)', borderRadius: '9999px' }}
           >
             {googleLoading ? (
               <Loader2 className="w-4 h-4 animate-spin" />
@@ -100,12 +95,12 @@ export default function LoginPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--muted)' }}>Email</label>
+              <label className="block text-sm font-medium mb-2.5 px-1" style={{ color: 'var(--muted)' }}>Email</label>
               <div 
-                className="flex items-center w-full px-3 py-3 rounded-xl border transition-all duration-200 focus-within:ring-2"
-                style={{ background: 'var(--surface-2)', borderColor: 'var(--border)' }}
+                className="flex items-center w-full px-4 py-3.5 border transition-all duration-300 focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500/50"
+                style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'var(--border)', borderRadius: '16px' }}
               >
-                <Mail className="w-4 h-4 mr-3 flex-shrink-0" style={{ color: 'var(--muted)' }} />
+                <Mail className="w-5 h-5 mr-3 flex-shrink-0" style={{ color: 'var(--muted)' }} />
                 <input
                   id="login-email"
                   type="email"
@@ -113,19 +108,19 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="you@example.com"
-                  className="w-full bg-transparent text-sm outline-none"
+                  className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-600"
                   style={{ color: 'var(--foreground)' }}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--muted)' }}>Password</label>
+              <label className="block text-sm font-medium mb-2.5 px-1" style={{ color: 'var(--muted)' }}>Password</label>
               <div 
-                className="flex items-center w-full px-3 py-3 rounded-xl border transition-all duration-200 focus-within:ring-2"
-                style={{ background: 'var(--surface-2)', borderColor: 'var(--border)' }}
+                className="flex items-center w-full px-4 py-3.5 border transition-all duration-300 focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500/50"
+                style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'var(--border)', borderRadius: '16px' }}
               >
-                <Lock className="w-4 h-4 mr-3 flex-shrink-0" style={{ color: 'var(--muted)' }} />
+                <Lock className="w-5 h-5 mr-3 flex-shrink-0" style={{ color: 'var(--muted)' }} />
                 <input
                   id="login-password"
                   type={showPassword ? 'text' : 'password'}
@@ -133,13 +128,13 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="••••••••"
-                  className="w-full bg-transparent text-sm outline-none"
+                  className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-600"
                   style={{ color: 'var(--foreground)' }}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="ml-2 flex-shrink-0 transition-colors"
+                  className="ml-2 flex-shrink-0 transition-colors hover:text-white"
                   style={{ color: 'var(--muted)' }}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -151,10 +146,10 @@ export default function LoginPage() {
               id="login-submit-btn"
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-semibold text-white transition-all duration-200 hover:scale-[1.02] disabled:opacity-60 btn-glow flex items-center justify-center gap-2"
-              style={{ background: 'var(--accent)' }}
+              className="w-full py-4 font-bold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-indigo-500/25 active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-3 mt-4 shadow-lg shadow-indigo-500/10"
+              style={{ background: 'var(--accent)', borderRadius: '9999px' }}
             >
-              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+              {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
               {loading ? 'Signing in…' : 'Sign In'}
             </button>
           </form>

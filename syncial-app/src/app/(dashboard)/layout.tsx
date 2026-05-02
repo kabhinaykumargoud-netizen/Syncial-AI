@@ -18,7 +18,7 @@ export default async function DashboardLayout({
   const userEmail = user.email;
 
   return (
-    <div className="flex min-h-screen" style={{ background: 'var(--background)' }}>
+    <div className="flex min-h-screen bg-transparent">
       <Sidebar userEmail={userEmail} userName={userName} />
       <main className="flex-1 min-w-0 lg:overflow-auto">
         {/* Mobile top padding for fixed header */}
